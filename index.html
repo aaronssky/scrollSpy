@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="100">
+<title>my Collection</title>
+<link href="style1.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery-scrollSpy.js"></script>
+<style type="text/css">
+	body{
+		background-color: lightgrey;
+		margin: 0;
+		padding:0;
+	}
+	.top{
+		width: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 5000;
+	}
+
+	.top .nav{
+		background: rgba(255, 255, 255, 0.75);
+		-webkit-border-radius: 0 0 5px 5px;
+		height: 40px;
+		width: 950px;
+		margin: 0 auto;
+		position: relative;
+		font-family: "DINProBold",Arial, sans-serif;
+		font-size: 13px;
+		list-style: none;
+		padding: 20px 0 0px 20px;
+	}
+
+	.top .nav li{
+		float: left;
+		margin: 0 50px 0 0;
+	}
+
+	.top li a {
+		color: #8f8f8f;
+		text-decoration: none;
+		padding-bottom: 10px;
+	}
+
+	.top li a:hover {
+		color: #000;
+	}
+
+	.top li.active a{
+		color: #000;
+		background: url(images/bg_nav_active_black.png) no-repeat 0 100%;
+	}
+	.section{
+		width:100%;
+		min-height: 300px;
+		position: relative;
+	}
+
+	#first{
+		background: url(images/jobs_bg.jpg) center 0 no-repeat fixed;
+		height: 900px;
+	}
+
+	#second{
+		background: url(images/projects_bg.jpg) center 0 no-repeat fixed;
+		height: 1000px;
+	}
+
+	#third{
+		background: url(images/design_bg.jpg) center 0 no-repeat fixed;
+		height: 1000px;
+	}
+
+	#third .float-obj{
+		background: url(images/design_sprite_frei.png) 50% 435px no-repeat fixed;
+	}
+
+	#fourth{
+		height: 1000px;
+	}
+
+	.float-obj{
+		position: absolute;
+		width: 100%;
+		height: 1000px;
+		z-index: 200;
+		top: 0;
+		padding: 0;
+	}
+	
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	var a = new scrollSpy($(".section"));//实例化并设置监听的元素
+	var setting = {
+		responceItem : $(".nav a"),//设置响应区域
+		callback : function(obj){
+			console.log(obj.html());
+			$(".nav li").removeClass("active");
+			$(obj).parent().addClass("active");
+		}
+	};
+	a.init(setting);
+})
+</script>
+</head>
+
+<body>
+	<div class="top">
+		<ul class="nav">
+		  <li id="mn_home" class="active"><a href="#first" title="Home">Home</a></li>
+	      <li id="mn_projects" class=""><a href="#second" title="Projekte">Projekte</a></li>
+	      <li id="mn_design" class=""><a href="#third" title="Design">Design</a></li>
+	      <li id="mn_technik" class=""><a href="#fourth" title="Technik">Technik</a></li>
+		</ul>
+	</div>
+	<div class="section" id="first">
+		<div class="content">1</div>
+	</div>
+	<div class="section" id="second">
+		<div class="content">2</div>
+	</div>
+	<div class="section" id="third">
+		<div class="float-obj"></div>
+		<div class="content">3</div>
+	</div>
+	<div class="section" id="fourth">
+		<div class="content">4</div>
+	</div>
+</body>
+</html>
