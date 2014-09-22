@@ -1,92 +1,134 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="refresh" content="100">
+<title>my Collection</title>
+<link href="style1.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery-scrollSpy.js"></script>
+<style type="text/css">
+	body{
+		background-color: lightgrey;
+		margin: 0;
+		padding:0;
+	}
+	.top{
+		width: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 5000;
+	}
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+	.top .nav{
+		background: rgba(255, 255, 255, 0.75);
+		-webkit-border-radius: 0 0 5px 5px;
+		height: 40px;
+		width: 950px;
+		margin: 0 auto;
+		position: relative;
+		font-family: "DINProBold",Arial, sans-serif;
+		font-size: 13px;
+		list-style: none;
+		padding: 20px 0 0px 20px;
+	}
 
-  <title>Scrollspy</title>
-  <meta name="description" content="A plugin can do some actions what you need when you are rolling the scroll wheel">
+	.top .nav li{
+		float: left;
+		margin: 0 50px 0 0;
+	}
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+	.top li a {
+		color: #8f8f8f;
+		text-decoration: none;
+		padding-bottom: 10px;
+	}
 
+	.top li a:hover {
+		color: #000;
+	}
+
+	.top li.active a{
+		color: #000;
+		background: url(images/bg_nav_active_black.png) no-repeat 0 100%;
+	}
+	.section{
+		width:100%;
+		min-height: 300px;
+		position: relative;
+	}
+
+	#first{
+		background: url(images/jobs_bg.jpg) center 0 no-repeat fixed;
+		height: 900px;
+	}
+
+	#second{
+		background: url(images/projects_bg.jpg) center 0 no-repeat fixed;
+		height: 1000px;
+	}
+
+	#third{
+		background: url(images/design_bg.jpg) center 0 no-repeat fixed;
+		height: 1000px;
+	}
+
+	#third .float-obj{
+		background: url(images/design_sprite_frei.png) 50% 435px no-repeat fixed;
+	}
+
+	#fourth{
+		height: 1000px;
+	}
+
+	.float-obj{
+		position: absolute;
+		width: 100%;
+		height: 1000px;
+		z-index: 200;
+		top: 0;
+		padding: 0;
+	}
+	
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	var a = new scrollSpy($(".section"));//实例化并设置监听的元素
+	var setting = {
+		responceItem : $(".nav a"),//设置响应区域
+		callback : function(obj){
+			console.log(obj.html());
+			$(".nav li").removeClass("active");
+			$(obj).parent().addClass("active");
+		}
+	};
+	a.init(setting);
+})
+</script>
 </head>
 
 <body>
-
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Scrollspy</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">A plugin can do some actions what you need when you are rolling the scroll wheel</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/aaronssky/scrollSpy/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/aaronssky/scrollSpy/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/aaronssky/scrollSpy" class="code">View Scrollspy on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </article>
-      </div>
-    </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/aaronssky" class="avatar"><img src="https://avatars1.githubusercontent.com/u/5162931?v=2&amp;s=60" width="48" height="48"></a> <a href="https://github.com/aaronssky">aaronssky</a> maintains <a href="https://github.com/aaronssky/scrollSpy">Scrollspy</a></p>
-
-
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/aaronssky/scrollSpy/tarball/master" class="tar">tar</a><a href="https://github.com/aaronssky/scrollSpy/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
-
-  
+	<div class="top">
+		<ul class="nav">
+		  <li id="mn_home" class="active"><a href="#first" title="Home">Home</a></li>
+	      <li id="mn_projects" class=""><a href="#second" title="Projekte">Projekte</a></li>
+	      <li id="mn_design" class=""><a href="#third" title="Design">Design</a></li>
+	      <li id="mn_technik" class=""><a href="#fourth" title="Technik">Technik</a></li>
+		</ul>
+	</div>
+	<div class="section" id="first">
+		<div class="content">1</div>
+	</div>
+	<div class="section" id="second">
+		<div class="content">2</div>
+	</div>
+	<div class="section" id="third">
+		<div class="float-obj"></div>
+		<div class="content">3</div>
+	</div>
+	<div class="section" id="fourth">
+		<div class="content">4</div>
+	</div>
 </body>
 </html>
